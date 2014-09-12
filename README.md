@@ -1,6 +1,8 @@
 #Hobo Test
-Prepackaged test framework that can be dragged into any project.
+Packaged test framework that can be dragged into any project.
+![](http://i.imgur.com/GJXpsJI.gif)
 
+#How it works
 ##Basic Assertions
 ###Single assertions
 ```ruby
@@ -18,4 +20,3 @@ they_exist(obj_player, obj_hud, obj_wall);
 # instance_of(object_type, object_id)
 instance_of(o_tile, ds_stack_pop(graph));
 ```
-
