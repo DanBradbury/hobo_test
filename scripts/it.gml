@@ -25,5 +25,5 @@ else
   {
   description += "#  EXPECTED: "+string(expected)+" WAS: "+string(actual);
   TEST.failing_tests[TEST.fail_count] = description;
-  fail();
+  fail(description);
   }

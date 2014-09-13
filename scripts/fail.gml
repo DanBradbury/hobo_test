@@ -1,7 +1,12 @@
 /**
 * Track that the test failed
+*
+* description - All relevent debugging info (SHOULD BE PASSED FROM ASSERTION)
+*
 */
+description = argument[0];
+
 TEST.result[TEST.test_count] = c_red;
-text += "#  EXPECTED: "+string(argument[1])+" WAS: "+string(argument[2]);
-TEST.failing_tests[TEST.fail_count] = text;
 TEST.fail_count += 1;
+test_lines += "#not ok#";
+test_lines += description;
