@@ -1,17 +1,29 @@
-ar = argument_count;
-text = argument[0];
+/**
+* Test actual value against expected value with a description of the test
+* 
+* description - a short statement of what is being tested
+* expected - the value that is expected of the system
+* actual - the actual state of the system
+*
+* Example:
+* it("should not be drawing movement on create", false, draw_movement);  
+* => false
+*/
 
-if(argument[1]==argument[2])
+ar = argument_count;
+description = argument[0];
+expected = argument[1];
+actual = argument[2]
+
+run_test();
+
+if(expected==actual)
   {
-    TEST.result[TEST.test_count] = c_green;
+  pass();
   }
 else
   {
-  TEST.result[TEST.test_count] = c_red;
-  text += "#  EXPECTED: "+string(argument[1])+" WAS: "+string(argument[2]);
-  TEST.failing_tests[TEST.fail_count] = text;
-  fail_count += 1;
+  description += "#  EXPECTED: "+string(expected)+" WAS: "+string(actual);
+  TEST.failing_tests[TEST.fail_count] = description;
+  fail();
   }
-//add_test_result()
-TEST.test_count += 1;
-TEST.test_x += 60;

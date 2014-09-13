@@ -1,11 +1,12 @@
+//TODO: add overlay layer for TAP
 draw_x = room_height/15;
 draw_y = room_height/15;
 draw_set_alpha(1);
 for(i=0;i<test_count;i++)
   {
   draw_set_color(result[i]);
-  draw_circle(view_xview[0]+draw_x, view_yview[0]+draw_y, room_width/50, false);
-  draw_x += room_width/50*2 + room_width/999;
+  draw_circle(view_xview[0]+draw_x, view_yview[0]+draw_y, view_wview[0]/50, false);
+  draw_x += view_wview[0]/50*2 + view_wview[0]/999;
   }
 text_x = 100;
 text_y = draw_y+200;

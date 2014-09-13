@@ -25,7 +25,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>hobo_test();
+            <string>hobo_init();
 //TEST LIST
 
 </string>
