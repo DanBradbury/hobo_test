@@ -81,8 +81,7 @@ else
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_set_font(font0);
-draw_test();
+            <string>draw_test();
 </string>
           </argument>
         </arguments>
