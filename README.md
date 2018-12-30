@@ -1,9 +1,10 @@
 # Hobo Test
 Packaged test framework that can be dragged into any project (tested w/ GM Studio 1).
-![](http://i.imgur.com/GJXpsJI.gif)
+![](https://i.imgur.com/OnZhbzU.gif)
 
 # How it works
-Add the scripts and object to your project and simply add the `TEST` object to your room that you want to run tests on
+Import the extension (drag into IDE) and add the `TEST` object to your first room
+
 ## Basic Assertions
 ### it(description, expected, result)
 > Fails if expected != result
@@ -21,4 +22,3 @@ instance_of(obj_tile, ds_stack_pop(graph));
 ```c
 they_exist(obj_player, obj_hud, obj_wall);
 ```
-
