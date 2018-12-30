@@ -75,7 +75,7 @@
           <args/>
         </function>
         <function>
-          <name>hobo_int</name>
+          <name>hobo_init</name>
           <externalName>hobo_init</externalName>
           <kind>11</kind>
           <help>hobo_init()</help>
