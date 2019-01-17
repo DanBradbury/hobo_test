@@ -30,7 +30,9 @@
   </ConfigOptions>
   <androidPermissions/>
   <IncludedResources>
+    <Resource>Included Files\hobo_dll.dll</Resource>
     <Resource>Objects\TEST</Resource>
+    <Resource>Scripts\test_list.gml</Resource>
   </IncludedResources>
   <files>
     <file>
@@ -106,6 +108,60 @@
           <externalName>pass</externalName>
           <kind>11</kind>
           <help>pass</help>
+          <returnType>2</returnType>
+          <argCount>-1</argCount>
+          <args/>
+        </function>
+        <function>
+          <name>obj_exists</name>
+          <externalName>obj_exists</externalName>
+          <kind>12</kind>
+          <help>obj_exists</help>
+          <returnType>2</returnType>
+          <argCount>1</argCount>
+          <args/>
+        </function>
+        <function>
+          <name>do_thing</name>
+          <externalName>do_thing</externalName>
+          <kind>13</kind>
+          <help>do_thing(action, type)</help>
+          <returnType>2</returnType>
+          <argCount>2</argCount>
+          <args/>
+        </function>
+        <function>
+          <name>create_array</name>
+          <externalName>create_array</externalName>
+          <kind>14</kind>
+          <help>create_array(args...)</help>
+          <returnType>2</returnType>
+          <argCount>-1</argCount>
+          <args/>
+        </function>
+        <function>
+          <name>trigger_test</name>
+          <externalName>trigger_test</externalName>
+          <kind>15</kind>
+          <help>trigger_test()</help>
+          <returnType>2</returnType>
+          <argCount>-1</argCount>
+          <args/>
+        </function>
+        <function>
+          <name>run_hobo_tests</name>
+          <externalName>run_hobo_tests</externalName>
+          <kind>16</kind>
+          <help>run_hobo_tests()</help>
+          <returnType>2</returnType>
+          <argCount>-1</argCount>
+          <args/>
+        </function>
+        <function>
+          <name>run_custom_action</name>
+          <externalName>run_custom_action</externalName>
+          <kind>17</kind>
+          <help>run_custom_action()</help>
           <returnType>2</returnType>
           <argCount>-1</argCount>
           <args/>
