@@ -9,6 +9,8 @@
 extern "C" __declspec (dllexport) double __cdecl simulate_click()
 {
 	HWND hWnd = GetForegroundWindow();
-	SendMessage(hWnd, WM_LBUTTONDOWN, 0, NULL);
+	PostMessage(hWnd, WM_LBUTTONUP, MK_LBUTTON, NULL);
+	PostMessage(hWnd, WM_LBUTTONDOWN, MK_LBUTTON, NULL);
+
 	return 0;
 }

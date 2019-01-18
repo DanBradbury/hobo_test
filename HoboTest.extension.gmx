@@ -166,6 +166,15 @@
           <argCount>-1</argCount>
           <args/>
         </function>
+        <function>
+          <name>should_be</name>
+          <externalName>should_be</externalName>
+          <kind>18</kind>
+          <help>should_be(expected, object, variable_string)</help>
+          <returnType>2</returnType>
+          <argCount>-1</argCount>
+          <args/>
+        </function>
       </functions>
       <constants/>
     </file>

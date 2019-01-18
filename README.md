@@ -38,6 +38,15 @@ instance_of(obj_tile, ds_stack_pop(graph));
 ```c
 obj_exists(obj_overlay);
 ```
+### should_be(expected, object, instance_variable_name)
+> Will dynamically lookup the instance_variable on the object (used in cases where variables are updated by events)
+```c
+// either it OR should_be would work IF #on_create inventory_slot_count=1
+it("should be 1", 1, obj_character.inventory_slot_count);
+should_be(1, obj_character, "inventory_slot_count");
+do_thing("keypress", vk_enter); // picking up an item
+should_be(2, obj_character, "inventory_slot_count");
+``` 
 
 ## Simulating Gameplay
 > Hobo Test has some built-in helper functions to help basic gameplay using basic commands

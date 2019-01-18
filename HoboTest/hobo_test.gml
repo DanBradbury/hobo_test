@@ -40,7 +40,7 @@ with(TEST) {
   if(!ds_queue_empty(test_queue)) {
     var test_item = ds_queue_dequeue(test_queue);
     current_test = test_item;
-    alarm[2] = 10;
+    alarm[2] = 5;
   }
 }
 return 1;
@@ -105,6 +105,20 @@ switch(test_type) {
       }
       fail("instance_of failed: "+object_get_name(object));
       break;
+  case "should_be":
+    expected_value = test_array[1];
+    obj = test_array[2];
+    instance_var = test_array[3];
+    run_test();
+    obj_id = instance_find(obj, 0).id;
+    actual_value = variable_instance_get(obj_id, instance_var);
+    if(actual_value == expected_value) {
+      pass();
+      break;
+    } else{
+      fail("Expected "+instance_var+" to be "+string(expected_value)+ " was "+string(actual_value));
+      break;
+    }
 }
 
 #define instance_of
@@ -180,6 +194,14 @@ if(custom_action == "keypress") {
   //event_perform_object(obj_picture_character_select, ev_mouse, ev_left_release);
 }
 return 0;
+
+#define should_be
+/// should_be(arg, arg, arg)
+var expected_value = argument[0];
+var obj = argument[1];
+var instance_var = argument[2];
+ds_queue_enqueue(test_queue, create_array("should_be", expected_value, obj, instance_var));
+return 0
 
 #define pass
 /// pass()->int
