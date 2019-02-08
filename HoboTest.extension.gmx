@@ -122,12 +122,12 @@
           <args/>
         </function>
         <function>
-          <name>do_thing</name>
-          <externalName>do_thing</externalName>
+          <name>simulate_mouse_click</name>
+          <externalName>simulate_mouse_click</externalName>
           <kind>13</kind>
-          <help>do_thing(action, type)</help>
+          <help>simulate_mouse_click(mouse_button, x, y)</help>
           <returnType>2</returnType>
-          <argCount>2</argCount>
+          <argCount>3</argCount>
           <args/>
         </function>
         <function>
@@ -175,6 +175,16 @@
           <argCount>-1</argCount>
           <args/>
         </function>
+        <function>
+          <name>simulate_keypress</name>
+          <externalName>simulate_keypress</externalName>
+          <kind>19</kind>
+          <help>simulate_keypress(vk_left)</help>
+          <returnType>2</returnType>
+          <argCount>1</argCount>
+          <args/>
+        </function>
+
       </functions>
       <constants/>
     </file>

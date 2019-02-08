@@ -36,12 +36,19 @@ script_execute(test_list);
 
 #define run_hobo_tests
 /// run_hobo_tests()
-with(TEST) {
-  if(!ds_queue_empty(test_queue)) {
-    var test_item = ds_queue_dequeue(test_queue);
-    current_test = test_item;
-    alarm[2] = 5;
+// not sure if this will work for HOBO_TEST=0|1
+if(hobo_enabled) {
+  with(TEST) {
+    if(!ds_queue_empty(test_queue)) {
+      var test_item = ds_queue_dequeue(test_queue);
+      current_test = test_item;
+      alarm[2] = 5;
+    }
   }
+  return 0;
+}
+with(TEST) {
+  instance_destroy();
 }
 return 1;
 
@@ -59,18 +66,30 @@ switch(test_type) {
       fail("# EXPECTED object to exist: "+object_get_name(obj));
     }
     break;
-  case "do_thing":
-    var action = test_array[1];
-    var type = test_array[2];
-    if(action == "keypress") {
-      custom_action = action;
-      custom_type = type;
-      alarm[1] = 1;
-    } else if(action == "mouseclick") {
-      custom_action = action;
-      custom_type = type;
-      alarm[1] = 1;
+  case "simulate_mouse_click":
+    var button_press = test_array[1];
+    var x_coord = test_array[2];
+    var y_coord = test_array[3];
+    // need to confirm how this is being handled in he alarm
+    custom_type = create_array(x_coord, y_coord);
+    switch(button_press) {
+      case mb_left:
+        custom_action = "left_click";
+        break;
+      case mb_right:
+        custom_action = "right_click";
+        break;
+      case mb_middle:
+        custom_action = "middle_click";
+        break;
     }
+    alarm[1] = 1;
+    break;
+  case "simulate_keypress":
+    var type = test_array[1];
+    custom_action = "simulate_keypress";
+    custom_type = type;
+    alarm[1] = 1;
     break;
   case "it":
     description = test_array[1];
@@ -172,19 +191,21 @@ obj = argument[0]
 ds_queue_enqueue(test_queue, create_array("obj_exists", obj));
 return 0;
 
-#define do_thing
-/// do_thing(val:T, val:T)->bool
-action = argument[0]
-type = argument[1]
-ds_queue_enqueue(test_queue, create_array("do_thing", action, type));
+#define simulate_mouse_click
+/// simulate_mouse_click(mb_left, x, y)
+ds_queue_enqueue(test_queue, create_array("simulate_mouse_click", argument[0], argument[1], argument[2]));
+return 0;
+
+#define simulate_keypress
+ds_queue_enqueue(test_queue, create_array("simulate_keypress", argument[0]));
 return 0;
 
 #define run_custom_action
 /// run_custom_action()
-if(custom_action == "keypress") {
+if(custom_action == "simulate_keypress") {
   keyboard_key_press(custom_type);
   keyboard_key_release(custom_type);
-} else if(custom_action == "mouseclick") {
+} else if(custom_action == "left_click") {
   var cx = custom_type[0];
   var cy = custom_type[1];
   window_mouse_set(cx, cy);

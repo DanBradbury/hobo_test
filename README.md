@@ -1,5 +1,5 @@
 # Hobo Test
-Packaged test framework that can be dragged into any project (tested w/ GM Studio 1)
+Flexible test framework that can be added into any existing project (tested w/ GM Studio 1)
 ![](https://i.imgur.com/OnZhbzU.gif)
 
 # Usage
@@ -50,12 +50,17 @@ should_be(2, obj_character, "inventory_slot_count");
 
 ## Simulating Gameplay
 > Hobo Test has some built-in helper functions to help basic gameplay using basic commands
-### do_thing(action, extra_info)
-> Used to simulate keypress, mouse clicks, etc
+### simulate_keypress(key_code)
+> Simulates a key press and release
 ```c
-do_thing("keypress", ord("A")); // keypress takes a second argument that is the keycode
-do_thing("mouseclick", pack(200, 500)); // mouseclick's second argument is an array with x,y coords
-// pack() is a utility function provided by hobo_tools to simplify creating arrays
+// vk_* AND ord(char) work
+simulate_keypress(vk_left);
+simulate_keypress(ord('A'));
+```
+### simulate_mouse_click(mouse_button, x_pos, y_pos)
+```c
+// mb_left | mb_right | mb_middle
+simulate_mouse_click(mb_left, 10, 10);
 ```
 
 # Building Yourself
